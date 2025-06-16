@@ -1,3 +1,32 @@
-
-font_path: "./fonts/IPAexfont00401/ipaexg.ttf"
-output_path: "./output/"
+title: ""
+effective_date: ""
+names_path: "config/names.csv"
+layout_path: "config/layout.csv"
+font_path: "fonts/IPAexfont00401/ipaexg.ttf"
+output_path: "output/seating.png"
+back_clr: "white"
+student_desk:
+  padding_x: 10
+  padding_y: 10
+  sz_x: 180
+  student_num:
+    box_sz_y: 20
+    fill_clr: "white"
+    font_pt: 18
+    txt_clr: "black"
+  kana:
+    box_sz_y: 20
+    fill_clr: "white"
+    font_pt: 18
+    txt_clr: "black"
+  kanji:
+    box_sz_y: 30
+    fill_clr: "white"
+    font_pt: 27
+    txt_clr: "black"
+teacher_desk:
+  sz_x: 50
+  sz_y: 300
+  fill_clr: "white"
+  font_pt: 40
+  txt_clr: "black"
