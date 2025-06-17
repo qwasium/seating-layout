@@ -16,7 +16,7 @@ See [below](#configuration-files) for details.
 
 ### If you know Python
 
-This program is tested of Python 13.
+This program is tested of Python 3.13.
 
 ```bash
 python3 -m venv .venv
@@ -30,14 +30,18 @@ See `run-me.sh`/`run-me.ps1` for environment setup.
 
 ### If you have no idea
 
-Go ahead and use ChatGPT/Claude/Gemini to give you guidance.
-**Be carefull NOT prompt personal information!**
+Go ahead and copy & paste this `README.md` file into ChatGPT/Claude/Gemini to give you guidance.
+
+Regarding `names.csv`: **Be carefull NOT to prompt personal information!**
 
 1. Install `Python`
 2. Configure the appearance in `config.yaml`
 3. Define the seating layout in `layout.csv`
 4. Add student information in `names.csv`
-5. Run the main script as below:
+5. Run the main script (see below)
+
+Output image is `output/seating.png` by default.
+The output path is defined in `config.yaml`.
 
 #### Windows
 
@@ -71,7 +75,7 @@ chmod +x run-me.sh
 
 ## Configuration Files
 
-The application uses three main configuration files located in the `config` directory.
+The application uses three main configuration files located in the `config` directory by default.
 
 If each feels unclear, play around by tweaking the config and see how the output changed.
 
