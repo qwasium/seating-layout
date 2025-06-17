@@ -166,14 +166,18 @@ Group identifiers:
 - `A`, `B`, etc... (whatever unique string)
   - Group identifiers for student desks.
   - Corresponds to the `group` column in `names.csv`.
-- `e`: Empty desk (will be marked as "n/a")
-- `x`: No desk (space)
+- `e`: Empty desk (desk exists, not used)
+  - In the output, it will be marked as "n/a" by default
+- `x`: No desk (desk does not exist)
+  - Empty value is not allowed; use `x` to fill in the blanks\
+  - Nothing will be rendered for `x` in the output.
 
 NOTE:
 
 - The output image will be rendered in the **inverted layout**; teacher's desk is at the top in `layout.csv`
 - First column must be row index: 0, 1, 2, ...
 - First row must be column index: 0, 1, 2, ...
+- Empty value is not allowed in any column/row
 
 Example layout:
 
@@ -219,6 +223,10 @@ number,name,kana,group
 ## Notes
 
 - The number of students in each group in `names.csv` must match the number of desks for that group in `layout.csv`
+  - In the example above, group `A` is 5 people in `names.csv` and 5 desks in `layout.csv`; the count should match for all groups. 
 - Group identifiers `x` and `e` are reserved and should not be used in `names.csv`
+  - `x` and `e` are used only in `layout.csv`
+  - `x`: no desk (empty value not allowed in `layout.csv`)
+  - `e`: empty desk (desk exists but is not used)
 - The random seed in `config.yaml` can be set to "none" for random assignment each time
 - The output image will be saved in the specified `output_path`
