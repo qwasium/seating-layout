@@ -32,7 +32,7 @@ See `run-me.sh`/`run-me.ps1` for environment setup.
 
 ### If you have no idea
 
-Go ahead and copy & paste this `README.md` file into ChatGPT/Claude/Gemini to give you guidance.
+Go ahead and copy & paste this `README.md` file into ChatGPT/Claude/Gemini/etc. to give you guidance.
 
 Regarding `names.csv`: **Be carefull NOT to prompt personal information!**
 
@@ -57,7 +57,7 @@ Open `powershell` and run the following.
 # This gives the script the permission to be ran
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-# Run the program
+# Run the program; create image
 .\run-me.ps1
 ```
 
@@ -72,7 +72,7 @@ Open the terminal and run the following.
 # This gives the script the permission to be ran
 chmod +x run-me.sh
 
-# Run the program
+# Run the program; create image
 ./run-me.sh
 ```
 
@@ -233,3 +233,6 @@ number,name,kana,group
   - `e`: empty desk (desk exists but is not used)
 - The random seed in `config.yaml` can be set to "none" for random assignment each time
 - The output image will be saved in the specified `output_path`
+- Can I directly set the output image size in `config.yaml`?: No
+  - The size of the output image is just a result of tiling the desks
+  - Change the layout or the parameters of desk size to adjust
