@@ -25,6 +25,7 @@ student_desk:
     font_pt: 27
     txt_clr: "black"
 teacher_desk:
+  txt: ""
   sz_x: 50
   sz_y: 300
   fill_clr: "white"

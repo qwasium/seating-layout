@@ -86,7 +86,7 @@ def main(config: dict):
         ) == cnt[i], f"Count for group: {grp} don't match between names csv and layout csv."
         rnd_ary = np.arange(1, cnt[i] + 1)
         np.random.shuffle(rnd_ary)
-        grp_rnd[grp] = list(rnd_ary)
+        grp_rnd[grp] = list(rnd_ary) # starts from 1
 
     # add shuffld data
     rand_col = []
@@ -94,15 +94,46 @@ def main(config: dict):
         rand_col.append(grp_rnd[row['group']].pop())
     for grp, lst in grp_rnd.items():
         assert lst == [], "Somethings is wrong with random number list."
-    names_df["group_shuffle"] = rand_col
+    names_df["group_shuffle"] = rand_col # starts from 1
 
     # row wise flatten [(0,0),(1,0),(2,0),...,(x,y)]
     x_index = np.tile(np.arange(1, layout_np.shape[1] + 1), layout_np.shape[0])
     y_index = np.arange(1, layout_np.shape[0] + 1).repeat(layout_np.shape[1])
     layout_flat = layout_np.flatten(order='C')
-    for i, grp in enumerate(layout_flat):
-        # TODO
-
+    grp_idx = {
+        grp: {
+            'x': list(x_index[layout_flat==grp]), # starts from 1
+            'y': list(y_index[layout_flat==grp])  # starts from 1
+        } for grp in layout_grps
+    }
+    x_col = []
+    y_col = []
+    for i, row in names_df.iterrows():
+        x_col.append(grp_idx[row["group"]]["x"].pop())
+        y_col.append(grp_idx[row["group"]]["y"].pop())
+    names_df["x_idx"] = x_col # starts from 1
+    names_df["y_idx"] = y_col # starts from 1
+    # TODO: add x and e to names_df
+    for grp in ["x", "e"]:
+        for i, (x, y) in enumerate(zip(grp_idx[grp]["x"], grp_idx[grp]["y"])):
+            names_df = pd.concat(
+                [
+                    names_df,
+                    pd.DataFrame(
+                        [
+                            {
+                                "name": grp,
+                                "kana": grp,
+                                "group": grp,
+                                "group_shuffle": i + 1, # starts from 1
+                                "x_idx": x, # starts from 1
+                                "y_idx": y # starts from 1
+                            }
+                        ]
+                    )
+                ],
+                ignore_index=True
+            )
  
     # student desk size
     student_desk_sz_x = (
@@ -129,6 +160,12 @@ def main(config: dict):
     # create image
     canvas = Image.new("RGB", (canvas_x, canvas_y), color=config["back_clr"])
     draw = ImageDraw.Draw(canvas)
+
+    # draw teacher desk
+    # draw.rectangle(
+    #     config
+    # )
+
 
     # write to image
     # output_path = HERE / config["output_path"]
