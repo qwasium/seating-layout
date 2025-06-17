@@ -1,33 +1,49 @@
-title: ""
-effective_date: ""
 names_path: "config/names.csv"
 layout_path: "config/layout.csv"
 font_path: "fonts/IPAexfont00401/ipaexg.ttf"
 output_path: "output/seating.png"
 back_clr: "white"
+random_seed: 36893
 student_desk:
   padding_x: 10
   padding_y: 10
   sz_x: 180
   student_num:
-    box_sz_y: 20
+    sz_y: 20
     fill_clr: "white"
+    line_clr: "black"
     font_pt: 18
     txt_clr: "black"
+    txt_left_offset: 5
   kana:
-    box_sz_y: 20
+    sz_y: 20
     fill_clr: "white"
+    line_clr: "black"
     font_pt: 18
     txt_clr: "black"
-  kanji:
-    box_sz_y: 30
+  name:
+    sz_y: 40
     fill_clr: "white"
-    font_pt: 27
+    line_clr: "black"
+    font_pt: 32
     txt_clr: "black"
+    empty_txt: "n/a"
 teacher_desk:
-  txt: ""
-  sz_x: 50
-  sz_y: 300
+  txt: "教卓"
+  sz_x: 300
+  sz_y: 50
+  padding_y: 20
   fill_clr: "white"
-  font_pt: 40
+  line_clr: "black"
+  font_pt: 38
+  txt_clr: "black"
+title:
+  txt: "Test Render"
+  txt_left_offset: 5
+  font_pt: 32
+  txt_clr: "black"
+start_date:
+  txt: ""
+  txt_right_offset: 5
+  font_pt: 32
   txt_clr: "black"
