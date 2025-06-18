@@ -12,11 +12,9 @@ The application will:
 3. Generate a seating chart image with the specified layout and appearance
 4. Save the output image to the specified path
 
-See [below](#configuration-files) for details.
-
 ### If you know Python
 
-This program is tested of Python 3.13.
+This program is tested on Python 3.13.
 
 ```bash
 git clone https://github.com/qwasium/seating-layout.git
@@ -28,25 +26,29 @@ pip install -r requirements.txt
 python3 main.py -f path/to/config.yaml
 ```
 
-See `run-me.sh`/`run-me.ps1` for environment setup.
-
 ### If you have no idea
 
 Go ahead and copy & paste this `README.md` file into ChatGPT/Claude/Gemini/etc. to give you guidance.
 
 Regarding `names.csv`: **Be carefull NOT to prompt personal information!**
 
+Doiwnload and test run:
+
 1. Install `Python`
 2. [Download this repo](https://github.com/qwasium/seating-layout/archive/refs/heads/main.zip) and unzip.
-3. Configure the appearance in `config.yaml`
-4. Define the seating layout in `layout.csv`
-5. Add student information in `names.csv`
-6. Run the main script (see below)
+3. Run the main script to test if it actually runs (see below)
+4. Output image is in `output/seating.png`
 
-Output image is `output/seating.png` by default.
-The output path is defined in `config.yaml`.
+Creating your own layout images:
 
-#### Windows
+1. Configure the appearance in `config.yaml`
+2. Define the seating layout in `layout.csv`
+3. Add student information in `names.csv`
+4. Run the main script (see below)
+
+See [config file section](#configuration-files) for details on configuration.
+
+#### Running the script (Windows)
 
 Run the script `run-me.ps1`.
 
@@ -61,7 +63,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 .\run-me.ps1
 ```
 
-#### Linux/MacOS
+#### Running the script (Linux/MacOS)
 
 Run the script `run-me.sh`.
 
@@ -90,71 +92,71 @@ This is the main configuration file that controls the appearance and behavior of
 
 ```yaml
 # File paths
-names_path: "config/names.csv"      # Path to student names file
-layout_path: "config/layout.csv"    # Path to seating layout file
+names_path: "config/names.csv"     # Path to student names file
+layout_path: "config/layout.csv"   # Path to seating layout file
 font_path: "fonts/IPAexfont00401/ipaexg.ttf"
-                                    # Path to font file
-                                    # truetype can be used
-output_path: "output/seating.png"   # Output image path
+                                   # Path to font file
+                                   # truetype can be used
+output_path: "output/seating.png"  # Output image path
 
 # General settings
-back_clr: "white"                   # Background color
-random_seed: 36893                  # Random seed for seat assignment
-#random_seed: None                  # Use "None" for random
+back_clr: "white"                  # Background color
+random_seed: 36893                 # Random seed for reproducing seat assignment
+#random_seed: None                 # Use "None" for non-reproduceable random
 
 # Student desk configuration
 student_desk:
-  padding_x: 10                     # Horizontal padding
-  padding_y: 10                     # Vertical padding
-  sz_x: 180                         # Desk width
-  student_num:                      # Student number box settings
-    sz_y: 20                        # Height
-    fill_clr: "white"               # Fill color
-    line_clr: "black"               # Border color
-    font_pt: 18                     # Font size
-    txt_clr: "black"                # Text color
-    txt_left_offset: 5              # Text left margin
-  kana:                             # Kana name box settings
-    sz_y: 20                        # Height
-    fill_clr: "white"               # Fill color
-    line_clr: "black"               # Border color
-    font_pt: 18                     # Font size
-    txt_clr: "black"                # Text color
-  name:                             # Full name box settings
-    sz_y: 40                        # Height
-    fill_clr: "white"               # Fill color
-    line_clr: "black"               # Border color
-    font_pt: 32                     # Font size
-    txt_clr: "black"                # Text color
-    empty_txt: "n/a"                # Text for empty seats
+  padding_x: 10                    # Horizontal padding
+  padding_y: 10                    # Vertical padding
+  sz_x: 180                        # Desk width
+  student_num:                     # Student number box settings
+    sz_y: 20                       # Height
+    fill_clr: "white"              # Fill color
+    line_clr: "black"              # Border color
+    font_pt: 18                    # Font size
+    txt_clr: "black"               # Text color
+    txt_left_offset: 5             # Text left margin
+  kana:                            # Kana name box settings
+    sz_y: 20                       # Height
+    fill_clr: "white"              # Fill color
+    line_clr: "black"              # Border color
+    font_pt: 18                    # Font size
+    txt_clr: "black"               # Text color
+  name:                            # Full name box settings
+    sz_y: 40                       # Height
+    fill_clr: "white"              # Fill color
+    line_clr: "black"              # Border color
+    font_pt: 32                    # Font size
+    txt_clr: "black"               # Text color
+    empty_txt: "n/a"               # Text for empty seats
 
 # Teacher desk configuration
 teacher_desk:
-  txt: "教卓"                     # Teacher desk text
-  sz_x: 300                       # Width
-  sz_y: 50                        # Height
-  padding_y: 20                   # Vertical padding
-  fill_clr: "white"               # Fill color
-  line_clr: "black"               # Border color
-  font_pt: 38                     # Font size
-  txt_clr: "black"                # Text color
+  txt: "教卓"                       # Teacher desk text
+  sz_x: 300                        # Width
+  sz_y: 50                         # Height
+  padding_y: 20                    # Vertical padding
+  fill_clr: "white"                # Fill color
+  line_clr: "black"                # Border color
+  font_pt: 38                      # Font size
+  txt_clr: "black"                 # Text color
 
 # Title configuration
 # Y dimension is determined by teacher desk config
 title:
-  txt: "Test Render"             # Title text
-  txt_left_offset: 5             # Left margin
-  font_pt: 32                    # Font size
-  txt_clr: "black"               # Text color
+  txt: "Test Render"               # Title text
+  txt_left_offset: 5               # Left margin
+  font_pt: 32                      # Font size
+  txt_clr: "black"                 # Text color
 
 # Date configuration
 # Y dimension is determined by teacher desk config
 start_date:
-  txt: "From Jun. 15, 2025"     # Date text
-  #txt: ""                      # If empty, "from <the date script is run>"
-  txt_right_offset: 5           # Right margin
-  font_pt: 32                   # Font size
-  txt_clr: "black"              # Text color
+  txt: "From Jun. 15, 2025"       # Date text
+  #txt: ""                        # If empty, "from <the date script is run>"
+  txt_right_offset: 5             # Right margin
+  font_pt: 32                     # Font size
+  txt_clr: "black"                # Text color
 ```
 
 ### 2. layout.csv
