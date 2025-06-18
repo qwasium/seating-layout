@@ -152,11 +152,11 @@ title:
 # Date configuration
 # Y dimension is determined by teacher desk config
 start_date:
-  txt: "From Jun. 15, 2025"       # Date text
-  #txt: ""                        # If empty, "from <the date script is run>"
-  txt_right_offset: 5             # Right margin
-  font_pt: 32                     # Font size
-  txt_clr: "black"                # Text color
+  txt: "From Jun. 15, 2025"        # Date text
+  #txt: ""                         # If empty, "from <the date script is run>"
+  txt_right_offset: 5              # Right margin
+  font_pt: 32                      # Font size
+  txt_clr: "black"                 # Text color
 ```
 
 ### 2. layout.csv
