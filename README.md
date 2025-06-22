@@ -238,3 +238,4 @@ number,name,kana,group
 - Can I directly set the output image size in `config.yaml`?: No
   - The size of the output image is just a result of tiling the desks
   - Change the layout or the parameters of desk size to adjust
+- IPA font is redistributed unmodified under its own license.
